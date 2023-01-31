@@ -61,7 +61,7 @@ void startThread() {
 		OSFatal("Nabbit: Failed to create threadData");
 	}
 
-	strncpy(threadData->threadName, "ScreenshotPlugin IO Thread", sizeof(threadData->threadName) - 1);
+	strncpy(threadData->threadName, "Medals Thread", sizeof(threadData->threadName) - 1);
 	OSSetThreadName(threadData->thread, threadData->threadName);
 	OSResumeThread(threadData->thread);
 	threadData->setup = true;

@@ -12,15 +12,14 @@ enum REGION {
 };
 
 typedef void v();
-typedef struct Titles
-{
+struct Title {
 	uint64_t title_id;
 	char name[80];
 	REGION region;
-	std::function<v> checkFunction;
-} Titles;
+	std::function<v> check_medals;
+};
 
-static const Titles titles[] = {
+static const Title titles[] = {
 	{0x0005000C1010EB00, "MARIO KART 8", JPN, &checkMarioKart8Medals},
 	{0x000500001010EC00, "MARIO KART 8", USA, &checkMarioKart8Medals},
 	{0x0005000C1010ED00, "MARIO KART 8", EUR, &checkMarioKart8Medals},

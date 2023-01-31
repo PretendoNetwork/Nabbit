@@ -2,7 +2,6 @@
 #include <wups.h>
 #include <notifications/notifications.h>
 #include "notifications.h"
-#include "thread.h"
 #include "utils/logger.h"
 
 // Mandatory plugin information.
@@ -25,5 +24,4 @@ DEINITIALIZE_PLUGIN() {
 
 ON_APPLICATION_START() {
 	DEBUG_FUNCTION_LINE("Start");
-	startThread();
 }

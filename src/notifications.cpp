@@ -23,15 +23,6 @@ void initNotificationModule() {
 		DEBUG_FUNCTION_LINE("Notification module library initialized");
 	}
 
-	// * Set notification fade out time
-	res = NotificationModule_SetDefaultValue(NOTIFICATION_MODULE_NOTIFICATION_TYPE_INFO, NOTIFICATION_MODULE_DEFAULT_OPTION_DURATION_BEFORE_FADE_OUT, NOTIFICATION_FADE_OUT_TIME);
-	if (res != NOTIFICATION_MODULE_RESULT_SUCCESS) {
-		DEBUG_FUNCTION_LINE("Failed to set notification fade out time");
-		OSFatal("Failed to set notification fade out time"); // TODO - Make this better
-	} else {
-		DEBUG_FUNCTION_LINE("Notification fade out speed set");
-	}
-
 	notificationsAvailable = true;
 }
 

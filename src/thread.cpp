@@ -1,7 +1,7 @@
-#include "thread.h"
 #include <coreinit/cache.h>
 #include <coreinit/debug.h>
 #include <malloc.h>
+#include "thread.h"
 #include "notifications.h"
 #include "utils/string_format.h"
 #include "utils/logger.h"
@@ -22,6 +22,11 @@ static int32_t threadCallback([[maybe_unused]] int argc, const char **argv) {
 
 			sendNotification(string_format("\ue010 Medal Get - Test"));
 			DEBUG_FUNCTION_LINE("HELLO FROM THREAD");
+
+			// TODO - Run the new check function in a loop
+			//while(true) {
+			//
+			//}
 
 			OSMemoryBarrier();
 			free(message);

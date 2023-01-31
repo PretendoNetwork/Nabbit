@@ -28,6 +28,7 @@ DECL_FUNCTION(uint32_t, MCP_RightCheckLaunchable, uint32_t *u1, uint32_t *u2, ui
 				}
 
 				param->title_id = current_title_id;
+				param->checkFunction = medal.checkFunction;
 
 				bool res = sendMessageToThread(param);
 				if (!res) {

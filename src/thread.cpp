@@ -23,6 +23,8 @@ static int32_t threadCallback([[maybe_unused]] int argc, const char **argv) {
 			sendNotification(string_format("\ue010 Medal Get - Test"));
 			DEBUG_FUNCTION_LINE("HELLO FROM THREAD");
 
+			param->checkFunction();
+
 			// TODO - Run the new check function in a loop
 			//while(true) {
 			//

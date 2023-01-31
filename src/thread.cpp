@@ -16,7 +16,7 @@ static int32_t threadCallback([[maybe_unused]] int argc, const char **argv) {
 	OSMessage recv;
 	while (OSReceiveMessage(&magic->queue, &recv, OS_MESSAGE_FLAGS_BLOCKING)) {
 		if (recv.args[0] == COMMAND_SWAP_TITLE) {
-			auto *message = (SwapTitleMessage*) recv.message;
+			auto *param = (SwapTitleMessage*) recv.message;
 
 			// TODO - CHECK FOR MEDALS BASED ON TITLE ID?
 
@@ -29,7 +29,7 @@ static int32_t threadCallback([[maybe_unused]] int argc, const char **argv) {
 			//}
 
 			OSMemoryBarrier();
-			free(message);
+			free(param);
 		}
 	}
 

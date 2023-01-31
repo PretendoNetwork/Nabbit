@@ -79,7 +79,7 @@ bool sendMessageToThread(SwapTitleMessage* param) {
 		OSMemoryBarrier();
 		return OSSendMessage(&curThread->queue, &send, OS_MESSAGE_FLAGS_NONE);
 	} else {
-		DEBUG_FUNCTION_LINE("Thread not setup");
+		DEBUG_FUNCTION_LINE("Thread not ready");
 	}
 	return false;
 }

@@ -31,7 +31,6 @@ void sendNotification(std::string notification) {
 		OSFatal("Nabbit: Tried to send notification before available"); // TODO - Make this better
 	}
 
-	//auto res = NotificationModule_AddInfoNotification(notification.c_str());
 	auto res = NotificationModule_AddInfoNotificationEx(notification.c_str(), NOTIFICATION_FADE_OUT_TIME, TEXT_COLOR_SUCCESS, BACKGROUND_COLOR, nullptr, nullptr);
 
 	if (res == NOTIFICATION_MODULE_RESULT_INVALID_ARGUMENT) {

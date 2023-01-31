@@ -2,7 +2,7 @@
 #include <string>
 #include <wups.h>
 #include <coreinit/cache.h>
-#include "medals.h"
+#include "titles.h"
 #include "notifications.h"
 #include "thread.h"
 #include "utils/string_format.h"
@@ -16,9 +16,9 @@ DECL_FUNCTION(uint32_t, MCP_RightCheckLaunchable, uint32_t *u1, uint32_t *u2, ui
 	if (result == 0 && current_title_id != title_id) {
 		current_title_id = title_id;
 
-		for (const auto& medal : medals) {
-			if (medal.title_id == current_title_id) {
-				DEBUG_FUNCTION_LINE("Launching title: %016llx, %s", current_title_id, medal.name);
+		for (const auto& title : titles) {
+			if (title.title_id == current_title_id) {
+				DEBUG_FUNCTION_LINE("Launching title: %016llx, %s", current_title_id, title.name);
 
 				SwapTitleMessage* param;
 				param = (SwapTitleMessage*) malloc(sizeof(SwapTitleMessage));
@@ -28,7 +28,7 @@ DECL_FUNCTION(uint32_t, MCP_RightCheckLaunchable, uint32_t *u1, uint32_t *u2, ui
 				}
 
 				param->title_id = current_title_id;
-				param->checkFunction = medal.checkFunction;
+				param->checkFunction = title.checkFunction;
 
 				bool res = sendMessageToThread(param);
 				if (!res) {

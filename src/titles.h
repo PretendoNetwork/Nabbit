@@ -6,16 +6,16 @@
 #define _PATCHER_H
 
 typedef void v();
-typedef struct Medals
+typedef struct Titles
 {
 	uint64_t title_id;
 	char name[80];
 	std::function<v> checkFunction;
-} Medals;
+} Titles;
 
-static const Medals medals[] = {
+static const Titles titles[] = {
 	{0x000500001010EC00, "MARIO KART 8", &checkMarioKart8Medals},
-	{0x0005000010176900, "Splatoon", nullptr}
+	{0x0005000010176900, "Splatoon", &checkSplatoonMedals}
 };
 
 #endif

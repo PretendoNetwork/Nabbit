@@ -36,7 +36,7 @@ void startThread() {
 
 	auto *threadData = &gThreadData;
 	memset(threadData, 0, sizeof(*threadData));
-	threadData->setup  = false;
+	threadData->ready  = false;
 	threadData->thread = (OSThread *) memalign(8, sizeof(OSThread));
 	if (!threadData->thread) {
 		DEBUG_FUNCTION_LINE("Failed to allocate threadData");
@@ -56,7 +56,7 @@ void startThread() {
 	if (!OSCreateThread(threadData->thread, &threadCallback, 1, (char *) threadData, reinterpret_cast<void *>((uint32_t) threadData->stack + stackSize), stackSize, 31, OS_THREAD_ATTRIB_AFFINITY_ANY)) {
 		free(threadData->thread);
 		free(threadData->stack);
-		threadData->setup = false;
+		threadData->ready = false;
 		DEBUG_FUNCTION_LINE("failed to create threadData");
 		OSFatal("Nabbit: Failed to create threadData");
 	}
@@ -64,7 +64,7 @@ void startThread() {
 	strncpy(threadData->threadName, "Medals Thread", sizeof(threadData->threadName) - 1);
 	OSSetThreadName(threadData->thread, threadData->threadName);
 	OSResumeThread(threadData->thread);
-	threadData->setup = true;
+	threadData->ready = true;
 
 	//gThreadsRunning = true;
 	OSMemoryBarrier();
@@ -72,7 +72,7 @@ void startThread() {
 
 bool sendMessageToThread(SwapTitleMessage* param) {
 	auto *curThread = &gThreadData;
-	if (curThread->setup) {
+	if (curThread->ready) {
 		OSMessage send;
 		send.message = param;
 		send.args[0] = COMMAND_SWAP_TITLE;

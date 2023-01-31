@@ -8,7 +8,7 @@ struct ThreadData {
 	void *stack;
 	OSMessageQueue queue;
 	OSMessage messages[2];
-	bool setup;
+	bool ready;
 	char threadName[0x50];
 };
 

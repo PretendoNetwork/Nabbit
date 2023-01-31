@@ -19,25 +19,25 @@ DECL_FUNCTION(uint32_t, MCP_RightCheckLaunchable, uint32_t *u1, uint32_t *u2, ui
 		for (const auto& medal : medals) {
 			if (medal.title_id == current_title_id) {
 				DEBUG_FUNCTION_LINE("Launching title: %016llx, %s", current_title_id, medal.name);
+
+				SwapTitleMessage* param;
+				param = (SwapTitleMessage*) malloc(sizeof(SwapTitleMessage));
+				if (!param) {
+					DEBUG_FUNCTION_LINE("Creating param failed"); // TODO - Make this better
+					OSMemoryBarrier();
+				}
+
+				param->title_id = current_title_id;
+
+				bool res = sendMessageToThread(param);
+				if (!res) {
+					free(param);
+					DEBUG_FUNCTION_LINE("Sending message to thread failed"); // TODO - Make this better
+				}
+
+				OSMemoryBarrier();
 			}
 		}
-
-		SwapTitleMessage* param;
-		param = (SwapTitleMessage*) malloc(sizeof(SwapTitleMessage));
-		if (!param) {
-			DEBUG_FUNCTION_LINE("Creating param failed"); // TODO - Make this better
-			OSMemoryBarrier();
-		}
-
-		param->title_id = current_title_id;
-
-		bool res = sendMessageToThread(param);
-		if (!res) {
-			free(param);
-			DEBUG_FUNCTION_LINE("Sending message to thread failed"); // TODO - Make this better
-		}
-
-		OSMemoryBarrier();
 	}
 
 	return result;

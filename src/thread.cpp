@@ -8,7 +8,7 @@
 
 ThreadData gThreadData;
 
-static int32_t fsIOthreadCallback([[maybe_unused]] int argc, const char **argv) {
+static int32_t threadCallback([[maybe_unused]] int argc, const char **argv) {
 	auto *magic = ((ThreadData*) argv);
 
 	constexpr int32_t messageSize = sizeof(magic->messages) / sizeof(magic->messages[0]);
@@ -53,7 +53,7 @@ void startThread() {
 
 	OSMemoryBarrier();
 
-	if (!OSCreateThread(threadData->thread, &fsIOthreadCallback, 1, (char *) threadData, reinterpret_cast<void *>((uint32_t) threadData->stack + stackSize), stackSize, 31, OS_THREAD_ATTRIB_AFFINITY_ANY)) {
+	if (!OSCreateThread(threadData->thread, &threadCallback, 1, (char *) threadData, reinterpret_cast<void *>((uint32_t) threadData->stack + stackSize), stackSize, 31, OS_THREAD_ATTRIB_AFFINITY_ANY)) {
 		free(threadData->thread);
 		free(threadData->stack);
 		threadData->setup = false;

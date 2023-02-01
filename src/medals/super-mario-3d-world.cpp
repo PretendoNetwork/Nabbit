@@ -27,11 +27,11 @@ void checkSuperMario3DWorldMedals() {
 	uint32_t coins;
 	uint32_t score;
 
-    Mocha_IOSUKernelRead32(OSEffectiveToPhysical(SAVE_SLOT_ADDRESS), (uint32_t*)&save_slot_buff);
-    Mocha_IOSUKernelRead32(OSEffectiveToPhysical(WORLD_ADDRESS), (uint32_t*)&world_buff);
-    Mocha_IOSUKernelRead32(OSEffectiveToPhysical(LEVEL_ADDRESS), (uint32_t*)&level_buff);
+	Mocha_IOSUKernelRead32(OSEffectiveToPhysical(SAVE_SLOT_ADDRESS), (uint32_t*)&save_slot_buff);
+	Mocha_IOSUKernelRead32(OSEffectiveToPhysical(WORLD_ADDRESS), (uint32_t*)&world_buff);
+	Mocha_IOSUKernelRead32(OSEffectiveToPhysical(LEVEL_ADDRESS), (uint32_t*)&level_buff);
 
-    std::memcpy(&save_slot, save_slot_buff, sizeof(uint32_t));
+	std::memcpy(&save_slot, save_slot_buff, sizeof(uint32_t));
 	std::memcpy(&world, world_buff, sizeof(uint32_t));
 	std::memcpy(&level, level_buff, sizeof(uint32_t));
 

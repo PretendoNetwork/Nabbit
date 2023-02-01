@@ -60,7 +60,7 @@ void checkSuperMario3DWorldMedals() {
 	DEBUG_FUNCTION_LINE("Save slot: %d, World %d-%d, Coins - %d, Score - %d", save_slot, world, level, coins, score);
 
 	if (!test_medal_1_got && world == 1 && level == 1 && coins == 10) {
-		sendNotification(string_format("\ue010 Medal Get - Test Medal, got 100 coins on 1-1"));
+		sendNotification(string_format("\ue010 Medal Get - Test Medal, got 10 coins on 1-1"));
 		test_medal_1_got = true;
 	}
 }

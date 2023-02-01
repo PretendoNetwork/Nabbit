@@ -1,11 +1,7 @@
 
-#include <string>
 #include <wups.h>
-#include <coreinit/cache.h>
 #include <gx2/surface.h>
 #include "titles.h"
-#include "notifications.h"
-#include "utils/string_format.h"
 #include "utils/logger.h"
 
 Title current_title;
@@ -18,7 +14,6 @@ DECL_FUNCTION(uint32_t, MCP_RightCheckLaunchable, uint32_t *u1, uint32_t *u2, ui
 			if (title.title_id == title_id) {
 				current_title = title;
 				DEBUG_FUNCTION_LINE("Launching title: %016llx, %s", current_title.title_id, current_title.name);
-				sendNotification(string_format("\ue010 Medal Get - Test"));
 			}
 		}
 	}

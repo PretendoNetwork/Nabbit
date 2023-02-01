@@ -1,5 +1,6 @@
 #include <string>
 #include <wups.h>
+#include <mocha/mocha.h>
 #include <notifications/notifications.h>
 #include "notifications.h"
 #include "utils/logger.h"
@@ -15,6 +16,14 @@ WUPS_PLUGIN_LICENSE("AGPL3");
 INITIALIZE_PLUGIN() {
 	WHBLogUdpInit();
 	DEBUG_FUNCTION_LINE("Init");
+
+	auto res = Mocha_InitLibrary();
+
+	if (res != MOCHA_RESULT_SUCCESS) {
+		DEBUG_FUNCTION_LINE("Mocha init failed with code %d!", res);
+		return;
+	}
+
 	initNotificationModule();
 }
 

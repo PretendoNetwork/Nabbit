@@ -2,6 +2,8 @@
 #include <mocha/mocha.h>
 #include <coreinit/memorymap.h>
 #include "medals/super-mario-3d-world.h"
+#include "notifications.h"
+#include "utils/string_format.h"
 #include "utils/logger.h"
 
 int SAVE_SLOT_ADDRESS = 0x36D3D7B4;
@@ -13,6 +15,8 @@ int SCORE_ADDRESS_SLOT_2 = 0x36D3FF00;
 int SCORE_ADDRESS_SLOT_3 = 0x36D412CC;
 int WORLD_ADDRESS = 0x464E4DE0;
 int LEVEL_ADDRESS = 0x464E4DDC;
+
+bool test_medal_1_got = false;
 
 void checkSuperMario3DWorldMedals() {
 	uint8_t save_slot_buff[4];
@@ -54,4 +58,9 @@ void checkSuperMario3DWorldMedals() {
 	std::memcpy(&score, score_buff, sizeof(uint32_t));
 
 	DEBUG_FUNCTION_LINE("Save slot: %d, World %d-%d, Coins - %d, Score - %d", save_slot, world, level, coins, score);
+
+	if (!test_medal_1_got && world == 1 && level == 1 && coins == 10) {
+		sendNotification(string_format("\ue010 Medal Get - Test Medal, got 100 coins on 1-1"));
+		test_medal_1_got = true;
+	}
 }

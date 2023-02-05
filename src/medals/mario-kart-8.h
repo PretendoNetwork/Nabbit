@@ -1,3 +1,5 @@
 #pragma once
 
-void checkMarioKart8Medals();
+#include "utils/rplinfo.h"
+
+void checkMarioKart8Medals(OSDynLoad_NotifyData rpx_data);

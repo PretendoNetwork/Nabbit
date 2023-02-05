@@ -1,7 +1,5 @@
 #include <string>
 #include <coreinit/debug.h>
-#include <coreinit/time.h>
-#include <coreinit/thread.h>
 #include <notifications/notifications.h>
 #include "utils/logger.h"
 

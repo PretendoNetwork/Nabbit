@@ -1,6 +1,6 @@
 #include "medals/mario-kart-8.h"
-#include "utils/logger.h"
+#include "utils/rplinfo.h"
 
-void checkMarioKart8Medals() {
-	DEBUG_FUNCTION_LINE("MK8");
+void checkMarioKart8Medals(OSDynLoad_NotifyData rpx_data) {
+	// TODO - Do this
 }

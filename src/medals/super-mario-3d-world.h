@@ -1,3 +1,5 @@
 #pragma once
 
-void checkSuperMario3DWorldMedals();
+#include "utils/rplinfo.h"
+
+void checkSuperMario3DWorldMedals(OSDynLoad_NotifyData rpx_data);

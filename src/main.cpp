@@ -1,4 +1,3 @@
-#include <string>
 #include <wups.h>
 #include <mocha/mocha.h>
 #include <notifications/notifications.h>
@@ -29,8 +28,4 @@ INITIALIZE_PLUGIN() {
 
 DEINITIALIZE_PLUGIN() {
 	NotificationModule_DeInitLibrary();
-}
-
-ON_APPLICATION_START() {
-	DEBUG_FUNCTION_LINE("Start");
 }

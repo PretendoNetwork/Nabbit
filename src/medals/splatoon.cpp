@@ -1,6 +1,6 @@
 #include "medals/splatoon.h"
-#include "utils/logger.h"
+#include "utils/rplinfo.h"
 
-void checkSplatoonMedals() {
-	DEBUG_FUNCTION_LINE("MK8");
+void checkSplatoonMedals(OSDynLoad_NotifyData rpx_data) {
+	// TODO - Do this
 }

@@ -8,6 +8,7 @@
 bool super_meat_boy_test_medal_1_got = false;
 
 int CURRENT_LEVEL_OFFSET = 0x2B718; // * uint32
+int TOTAL_DEATHS_OFFSET = 0x5B68B; // * uint8
 
 void checkSuperMeatBoyMedals(OSDynLoad_NotifyData rpx_data) {
 	uint32_t* level_ptr = (uint32_t*)(rpx_data.dataAddr + CURRENT_LEVEL_OFFSET);

@@ -7,8 +7,10 @@
 
 bool super_meat_boy_test_medal_1_got = false;
 
+int CURRENT_LEVEL_OFFSET = 0x2B718; // * uint32
+
 void checkSuperMeatBoyMedals(OSDynLoad_NotifyData rpx_data) {
-	uint32_t* level_ptr = (uint32_t*)(rpx_data.dataAddr + 0x2B718);
+	uint32_t* level_ptr = (uint32_t*)(rpx_data.dataAddr + CURRENT_LEVEL_OFFSET);
 	auto level = *level_ptr;
 
 	if (!super_meat_boy_test_medal_1_got && level == 3) {

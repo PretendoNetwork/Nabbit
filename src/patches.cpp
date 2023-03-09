@@ -24,6 +24,7 @@ ON_APPLICATION_START() {
 			}
 
 			rplinfo rpls = *rpl_info;
+
 			auto rpx = FindRPL(rpls, current_title.rpx_name);
 			if (!rpx) {
 				DEBUG_FUNCTION_LINE("Failed to find %s", current_title.rpx_name);

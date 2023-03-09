@@ -13,19 +13,14 @@ WUPS_PLUGIN_LICENSE("AGPL3");
 
 // Gets called once the loader exists.
 INITIALIZE_PLUGIN() {
-	WHBLogUdpInit();
+	initLogging();
+
 	DEBUG_FUNCTION_LINE("Init");
-
-	auto res = Mocha_InitLibrary();
-
-	if (res != MOCHA_RESULT_SUCCESS) {
-		DEBUG_FUNCTION_LINE("Mocha init failed with code %d!", res);
-		return;
-	}
 
 	initNotificationModule();
 }
 
 DEINITIALIZE_PLUGIN() {
+	deinitLogging();
 	NotificationModule_DeInitLibrary();
 }

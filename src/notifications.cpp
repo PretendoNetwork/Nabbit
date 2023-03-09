@@ -11,6 +11,11 @@ NMColor BACKGROUND_COLOR = {100, 100, 100, 255};
 NMColor TEXT_COLOR_DEFAULT = {100, 100, 100, 255};
 NMColor TEXT_COLOR_SUCCESS = {50, 205, 50, 255};
 
+NMColor TEXT_COLOR_BRONZE   = {191, 106, 58 , 255};
+NMColor TEXT_COLOR_SILVER   = {214, 214, 214, 255};
+NMColor TEXT_COLOR_GOLD     = {205, 154, 70 , 255};
+NMColor TEXT_COLOR_PLATINUM = {122, 150, 209, 255};
+
 void initNotificationModule() {
 	// * Ensure the notification module library is initialized
 	auto res = NotificationModule_InitLibrary();
@@ -30,6 +35,10 @@ void sendNotification(std::string notification) {
 	}
 
 	auto res = NotificationModule_AddInfoNotificationEx(notification.c_str(), NOTIFICATION_FADE_OUT_TIME, TEXT_COLOR_SUCCESS, BACKGROUND_COLOR, nullptr, nullptr);
+	res = NotificationModule_AddInfoNotificationEx(notification.c_str(), NOTIFICATION_FADE_OUT_TIME, TEXT_COLOR_BRONZE, BACKGROUND_COLOR, nullptr, nullptr);
+	res = NotificationModule_AddInfoNotificationEx(notification.c_str(), NOTIFICATION_FADE_OUT_TIME, TEXT_COLOR_SILVER, BACKGROUND_COLOR, nullptr, nullptr);
+	res = NotificationModule_AddInfoNotificationEx(notification.c_str(), NOTIFICATION_FADE_OUT_TIME, TEXT_COLOR_GOLD, BACKGROUND_COLOR, nullptr, nullptr);
+	res = NotificationModule_AddInfoNotificationEx(notification.c_str(), NOTIFICATION_FADE_OUT_TIME, TEXT_COLOR_PLATINUM, BACKGROUND_COLOR, nullptr, nullptr);
 
 	if (res == NOTIFICATION_MODULE_RESULT_INVALID_ARGUMENT) {
 		OSFatal("Nabbit: NOTIFICATION_MODULE_RESULT_INVALID_ARGUMENT: text was NULL"); // TODO - Make this better

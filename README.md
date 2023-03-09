@@ -19,3 +19,13 @@ Tiramisu is not supported as the notification system used in Nabbit only exists 
 - [ ] Splatoon (USA)
 - [ ] Splatoon (EUR)
 - [ ] Splatoon (JPN)
+
+## Building
+
+Requires:
+
+- [wut]
+- [wups](https://github.com/wiiu-env/WiiUPluginSystem)
+- [libmocha](https://github.com/wiiu-env/libmocha)
+- [libnotifications](https://github.com/wiiu-env/libnotifications)
+- [libkernel](https://github.com/wiiu-env/libkernel)
